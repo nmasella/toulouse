@@ -1,0 +1,29 @@
+{
+  "name": "antigravity-connextors-chat-test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "dev:slack": "tsx src/socket-mode.ts",
+    "start": "wrangler dev",
+    "dev:proxy": "cloudflared tunnel --url http://localhost:8787",
+    "test": "tsx scripts/test-slack-error.ts"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.0.0",
+    "wrangler": "^3.57.2"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^2.0.69",
+    "@slack/socket-mode": "^2.0.5",
+    "@slack/web-api": "^7.12.0",
+    "ai": "^5.0.97",
+    "dotenv": "^16.4.5",
+    "hono": "^4.3.7",
+    "zod": "^3.23.8"
+  }
+}
