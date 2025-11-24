@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
+    "dev": "tsx src/runner.ts",
+    "dev:worker": "wrangler dev",
     "dev:slack": "tsx src/socket-mode.ts",
-    "start": "wrangler dev",
+    "start": "tsx src/runner.ts",
     "dev:proxy": "cloudflared tunnel --url http://localhost:8787",
     "test": "tsx scripts/test-slack-error.ts"
   },

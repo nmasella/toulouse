@@ -61,13 +61,41 @@ Your Slack app needs the following scopes:
 
 ## Running the Bot
 
-To run the Slack bot in local development mode (Socket Mode):
+The project uses a unified runner to handle multiple platforms simultaneously.
 
 ```bash
-npm run dev:slack
+npm run dev
 ```
 
-The bot will connect to Slack and listen for events. You can DM the bot or mention it in a channel.
+This command will start:
+1.  **Slack Socket Mode**: Enabled by default.
+2.  **Webhooks Server (Worker)**: Enabled if `ENABLE_WEBHOOKS=true` OR if Telegram/Teams tokens are present in `.env`.
+
+### Configuration Options
+
+Control the behavior using environment variables in `.env`:
+
+*   `SLACK_SOCKET_MODE`: Set to `false` to disable Slack Socket Mode. (Default: `true`)
+*   `ENABLE_WEBHOOKS`: Set to `true` to force the Webhooks Server to run. (Default: `false`, unless Telegram/Teams tokens are present)
+
+### Examples
+
+*   **Run everything (Slack + Webhooks)**:
+    ```bash
+    npm run dev
+    ```
+    *(Assuming you have Slack tokens and Telegram/Teams tokens in .env)*
+
+*   **Run only Slack**:
+    ```bash
+    npm run dev
+    ```
+    *(If only Slack tokens are present)*
+
+*   **Run only Webhooks (disable Slack)**:
+    ```bash
+    SLACK_SOCKET_MODE=false npm run dev
+    ```
 
 ## Testing
 
